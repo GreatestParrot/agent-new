@@ -17,7 +17,7 @@ rn jobs add hello.job <ROBOT_NAME>
 
 Sources of this examples could be found [here](https://github.com/Smehnov/rn/blob/main/mb/job_examples.py).
 
-#### Robot Config are now in YAML
+### Robot Config are now in YAML
 
 The CLI now uses .yaml for storing configuration files, as it is more readable and widely used in DevOps tools. Example configuration file:
 ```yaml
@@ -39,16 +39,16 @@ Much better than previously used unformatted .json, isn't it?
 {"version": 1, "robots": [{"robot_id": "", "robot_peer_id": "12D3KooWFgRQ9bF2Xnu8UmVURssJLgL9gAdMdYbbs4g7fKGxkTf3", "robot_public_key": "Vx0g5l4VGapu89LIo0dB7q6q1HLSj+5cj/Mgl0OE7U4=", "name": "Spot", "tags": []}], "users": [{"public_key": "", "username": "new_user", "tags": []}]}
 ```
 
-#### Agent store job history
+### Agent store job history
 Previously, as only job execution reached it's end, we've got no way to get info about it. Now, agent stores history in jobs.json files locally.
 
-#### CLI Job Info and Logs
+### CLI Job Info and Logs
 Based on feature from above, CLI now can get much more than only simple status. To get detailed info about execution use
 ```bash
 rn jobs info <ROBOT_NAME> <JOB_ID>
 ```
 The output is gonna be something like this:
-```json
+```
 {
     'type': 'MessageResponse',
     'response_type': 'JobInfo',
@@ -68,17 +68,17 @@ visit:\n https://docs.docker.com/get-started/\n\n'
 }
 ```
 
-#### Encryption
+### Encryption
 Although libp2p guarantees secure channel between agents, it's impossible to trust over agents, especially the public ones. Now, agent supports encryption in `ChaCha20-Poly1305` format for messages. 
 Unfortunatelly, for CLI and Web-app (check next development dairy) to work, the same encryption/decryption function should be implemented on their side, so it's temporary disabled.
 
-#### Wireguard setup
+### Wireguard setup
 Experiments with manual setup of VPN were sucessfully conducted. Next stop is automated deployment
 
-#### Data Storage
+### Data Storage
 Data node - agent in storage mode which stores accepted files. It may be used for storing logs, camera frames, etc. The API already has mock version. It active development to share in release.
 
-### Next steps
+## Next steps
 1. Implement encryption for CLI, so nobody could read your agent's messages without you letting them.
 2. Make Wireguard network deployed automatic with only a few commands.
 3. Convert mock API for Data Nodes into real one.
